@@ -10,8 +10,8 @@ export default new Vuetify({
     themes: {
       light: {
         primary: '#F57C00',
-        secondary:'#131519',
-        text: '#7a7a7a',
+        secondary: '#131519',
+        texte: '#7a7a7a',
         titre: '#252B7F',
         error: '#FF5252',
         info: '#2196F3',
@@ -20,8 +20,8 @@ export default new Vuetify({
       },
       dark: {
         primary: '#d51b80',
-        secondary:'#131519',
-        text: '#7a7a7a',
+        secondary: '#131519',
+        texte: '#7a7a7a',
         titre: '#252B7F',
         error: '#FF5252',
         info: '#2196F3',
@@ -30,8 +30,11 @@ export default new Vuetify({
       },
     },
   },
-    lang: {
-      locales: { fr },
-      current: 'fr',
-    },
+  lang: {
+    locales: { fr },
+    current: 'fr',
+  },
+  icons: {
+    iconfont: 'mdi', 
+  },
 });
