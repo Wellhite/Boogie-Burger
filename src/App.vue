@@ -29,18 +29,21 @@
           align-with-title
           class="d-none d-sm-flex mx-12 justify-space-around"
         >
-          <v-tabs-slider ></v-tabs-slider>
+          <v-tabs-slider></v-tabs-slider>
 
-          <v-tab class="white--text">
-            <router-link class="link" to="/">Accueil</router-link>
+          <v-tab class="white--text" @click="$vuetify.goTo('#services')">
+            Nos menus
           </v-tab>
-          <v-tab class="white--text" @click="$vuetify.goTo('#services')"> Nos menus </v-tab>
-          <v-tab class="white--text" @click="$vuetify.goTo('#realisations')"> Nos produits </v-tab>
-          <v-tab class="white--text" @click="$vuetify.goTo('#avis')"> Avis </v-tab>
-          <v-tab class="white--text" @click="$vuetify.goTo('#contact')"> Contact </v-tab>
-          <v-tab>
-            <v-icon medium color="primary"> mdi-cart </v-icon></v-tab
-          >
+          <v-tab class="white--text" @click="$vuetify.goTo('#realisations')">
+            Nos produits
+          </v-tab>
+          <v-tab class="white--text" @click="$vuetify.goTo('#avis')">
+            Avis
+          </v-tab>
+          <v-tab class="white--text" @click="$vuetify.goTo('#contact')">
+            Contact
+          </v-tab>
+          <v-tab> <v-icon medium color="primary">mdi-cart</v-icon></v-tab>
         </v-tabs>
       </template>
       <v-navigation-drawer
@@ -51,11 +54,6 @@
       >
         <v-list nav dense>
           <v-list-item-group>
-            <v-list-item>
-              <v-list-item-title @click="tab = index">
-                <router-link class="link" to="/">Accueil</router-link>
-              </v-list-item-title>
-            </v-list-item>
             <v-list-item>
               <v-list-item-title @click="$vuetify.goTo('#services')">
                 Nos Menus
@@ -84,15 +82,79 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      <!-- Navigation bar ends -->
-     <!-- <v-content class="py-12">
-        <router-view></router-view>
-      </v-content> -->
     </v-app-bar>
 
     <v-main>
       <HelloWorld />
     </v-main>
+    <v-footer dark padless>
+      <v-card width="100%" flat tile class="black white--text text-center">
+        <v-row class="justify-center py-0 py-md-15">
+          <!-- -----------------------------------------------
+        First Column
+      ----------------------------------------------- -->
+          <v-col
+            cols="12"
+            xl="3"
+            sm="3"
+            md="3"
+            lg="3"
+            class="text-left px-xs-0"
+          >
+            <p class="mt-4 mb-0">
+              <v-icon color="primary"> mdi-map-marker</v-icon>17 rue Leon
+              Gambetta, 59000 Lille
+            </p>
+            <p class="my-4">
+              <v-icon color="primary"> mdi-phone</v-icon> 06 07 08 09 10
+            </p>
+            <p class="mb-0">
+              <v-icon color="primary"> mdi-at</v-icon>
+
+              <a class="dark-link white--text" href="/">
+                info@webdesign-and-com.fr</a
+              >
+            </p>
+          </v-col>
+          <!-- -----------------------------------------------
+        Second Column
+      ----------------------------------------------- -->
+          <v-col cols="12" xl="3" sm="3" md="3" lg="3" class="px-xs-0">
+            <v-card-text class="white--text text-body-1 text-justify">
+              Boogie Burger est un site fictif réalise par
+              <a href="">Web Design & Com</a> comme outil démonstration pour sa
+              clientèle, les informations indiquées sur le site sont fictives
+              également. <br />
+            </v-card-text>
+          </v-col>
+          <!-- -----------------------------------------------
+        Third Column
+      ----------------------------------------------- -->
+          <v-col
+            cols="12"
+            xl="3"
+            sm="3"
+            md="3"
+            lg="3"
+            class="d-flex py-6 px-xs-0 justify-center align-center"
+          >
+          
+            <ul class="text-left">
+             <div class="primary--text">Plan du site</div>
+              <li class="my-1"><a class="white--text" href="">Nos menus</a></li>
+              <li><a class="white--text" href="">Nos produits</a></li>
+              <li class="my-1"><a class="white--text" href="">Avis</a></li>
+              <li><a class="white--text" href="">Contact</a></li>
+            </ul>
+          </v-col>
+        </v-row>
+
+        <v-card-text class="primary--text font-weight-bold">
+          {{ new Date().getFullYear() }}
+          <strong class="white--text"> - made by Web design & Com</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -156,6 +218,14 @@ export default {
 };
 </script>
 <style scoped>
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .navbar {
   color: aliceblue;
 }
