@@ -1,24 +1,24 @@
 <template>
   <v-container fluid class="justify-center">
     <v-col cols="12" class="text-center">
-      <h1> Deal du moment </h1>
+      <h1 class="font-weight-bold text-h6 text-xl-h1 text-lg-h2 text-md-h2 text-sm-h4 "> Deal du moment </h1>
     </v-col>
     <v-row class="justify-center">
       <div class="block">
-        <p class="digit">{{ days | FormatDigital }}</p>
+        <p class="digit white--text">{{ days | FormatDigital }}</p>
         <p class="text">Jours</p>
       </div>
       <div class="block">
-        <p class="digit">{{ hours | FormatDigital }}</p>
+        <p class="digit white--text">{{ hours | FormatDigital }}</p>
         <p class="text">Heures</p>
       </div>
       <div class="block">
-        <p class="digit">{{ minutes | FormatDigital }}</p>
+        <p class="digit white--text">{{ minutes | FormatDigital }}</p>
         <p class="text">Minutes</p>
       </div>
       <div class="block">
-        <p class="digit">{{ seconds | FormatDigital }}</p>
-        <p class="text">Secondes</p>
+        <p class="digit white--text">{{ seconds | FormatDigital }}</p>
+        <p class="text ">Secondes</p>
       </div>
     </v-row>
   </v-container>
@@ -92,6 +92,9 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Yantramanav:wght@500&display=swap');
+
 .block {
   display: flex;
   flex-direction: column;
@@ -117,7 +120,10 @@ export default {
   font-weight: 100;
   font-family: "Roboto", serif;
   margin: 10px;
-  font-weight: bolder;
+
   text-align: center;
+  font-family: 'Russo One', sans-serif;
+font-family: 'Yantramanav', sans-serif;
 }
+
 </style>
