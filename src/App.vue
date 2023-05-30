@@ -65,7 +65,7 @@
           <v-list-item> </v-list-item>
           <v-list-item>
             <v-list-item-title @click="$vuetify.goTo('#services')">
-              Nos Menus
+              Nos menus
             </v-list-item-title>
           </v-list-item>
           <v-list-item>

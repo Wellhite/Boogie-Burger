@@ -19,7 +19,7 @@
             />
           </div>
 
-          <v-btn v-bind="size" class="ma-2" outlined color="primary">
+          <v-btn v-bind="size" class="ma-2" outlined color="primary" @click="$vuetify.goTo('#services')">
             Voir nos menus
           </v-btn>
         </v-col>
@@ -69,6 +69,7 @@
       >
         <v-hover v-slot="{ hover }"
           ><v-btn
+            id="services"
             v-bind="size"
             v-bind:class="{ active: currentFilter === 'menu' }"
             v-on:click="setFilter('menu')"
@@ -283,7 +284,7 @@ export default {
   components: { countDown, newsLetter },
 
   data: () => ({
-    end: new Date("2022-11-02T16:37:00"),
+    end: new Date("2023-06-03T16:37:00"),
     currentFilter: "burger",
     carts: [],
     products: [
