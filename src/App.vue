@@ -2,60 +2,39 @@
   <v-app>
     <v-app-bar app fixed flat dark elevation="4" class="black align-center">
       <v-toolbar-title class="mx-12">
-        <v-img
-          height="auto"
-          max-width="5vw"
-          contain
-          src="./assets/logo_boogie_burger.svg"
-          alt="logo Webdesign and Com"
-        ></v-img>
+        <v-img height="auto" max-width="5vw" contain src="./assets/logo_boogie_burger.svg"
+          alt="logo Webdesign and Com"></v-img>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-        <v-app-bar-nav-icon
-          class="hidden-md-and-up"
-          @click.stop="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-        <div class="hidden-sm-and-down">
-          <v-btn
-            flat
-            class="black white--text"
-            @click="$vuetify.goTo('#services')"
-          >
-            Nos menus
-          </v-btn>
-          <v-btn
-            flat
-            class="black white--text"
-            @click="$vuetify.goTo('#realisations')"
-          >
-            Nos produits
-          </v-btn>
-          <v-btn flat class="black white--text" @click="$vuetify.goTo('#avis')">
-            Avis
-          </v-btn>
-          <v-btn
-            flat
-            class="black white--text"
-            @click="$vuetify.goTo('#contact')"
-          >
-            Contact
-          </v-btn>
-          <v-btn flat class="black">
-            <v-row justify="center">
-              <v-btn
-                rounded
-                icon
-                class="primary white--text"
-                data-toggle="modal"
-                data-target="#cartModal"
-                @click.stop="dialog = true"
-                ><v-icon medium>mdi-cart</v-icon>{{ totalItems }}
-              </v-btn>
-              <v-dialog v-model="dialog" width="500">
-                <Panier /> </v-dialog></v-row
-          ></v-btn>
-        </div>
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <div class="hidden-sm-and-down">
+        <v-btn flat class="black white--text" @click="$vuetify.goTo('#services')">
+          Nos menus
+        </v-btn>
+        <v-btn flat class="black white--text" @click="$vuetify.goTo('#realisations')">
+          Nos produits
+        </v-btn>
+        <v-btn flat class="black white--text" @click="$vuetify.goTo('#avis')">
+          Avis
+        </v-btn>
+        <v-dialog v-model="contact" width="500"> <!-- le bouton appelle la methode contact qui ouvre la fenetre modale -->
+          <template v-slot:activator="{ on }">
+            <v-btn flat class="black white--text" v-on="on">
+              Contact
+            </v-btn>
+          </template>
+          <Contact />
+        </v-dialog>
+        <v-btn flat class="black">
+          <v-row justify="center">
+            <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#cartModal"
+              @click.stop="dialog = true"><v-icon medium>mdi-cart</v-icon>{{ totalItems }}
+            </v-btn>
+            <v-dialog v-model="dialog" width="500">
+              <Panier />
+            </v-dialog></v-row></v-btn>
+      </div>
 
     </v-app-bar>
 
@@ -65,7 +44,7 @@
           <v-list-item> </v-list-item>
           <v-list-item>
             <v-list-item-title @click="$vuetify.goTo('#services')">
-              Nos menus
+              Nos Menus
             </v-list-item-title>
           </v-list-item>
           <v-list-item>
@@ -83,25 +62,6 @@
               Contact
             </v-list-item-title>
           </v-list-item>
-          <v-list-item>
-            <v-list-item-title>
-              <v-dialog v-model="dialog" width="500">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    rounded
-                    class="primary white--text"
-                    data-toggle="modal"
-                    data-target="#cartModal"
-                    v-bind="attrs"
-                    v-on="on"
-                    ><v-icon medium>mdi-cart</v-icon>{{ totalItems }}</v-btn
-                  >
-                </template>
-
-                <Panier />
-              </v-dialog>
-            </v-list-item-title>
-          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -115,26 +75,17 @@
           <!-- -----------------------------------------------
         First Column
       ----------------------------------------------- -->
-          <v-col
-            cols="12"
-            xl="3"
-            lg="3"
-            md="4"
-            sm="12"
-            class="
-              text-xl-left text-lg-left text-md-left text-sm-center
-              px-xs-0
-              order-2 order-sm-2 order-xl-1 order-lg-1 order-md-1
-            "
-          >
-            <v-card-text
-              class="
-                text-caption
-                text-xl-subtitle-1
-                text-lg-subtitle-1
-                text-md-body-2
-              "
-            >
+          <v-col cols="12" xl="3" lg="3" md="4" sm="12" class="
+                                      text-xl-left text-lg-left text-md-left text-sm-center
+                                      px-xs-0
+                                      order-2 order-sm-2 order-xl-1 order-lg-1 order-md-1
+                                    ">
+            <v-card-text class="
+                                        text-caption
+                                        text-xl-subtitle-1
+                                        text-lg-subtitle-1
+                                        text-md-body-2
+                                      ">
               <p class="mt-4 mb-0">
                 <v-icon color="primary"> mdi-map-marker</v-icon>17 rue Leon
                 Gambetta, Lille
@@ -146,32 +97,22 @@
                 <v-icon color="primary"> mdi-at</v-icon>
 
                 <a class="dark-link white--text" href="/">
-                  info@webdesign-and-com.fr</a
-                >
+                  info@webdesign-and-com.fr</a>
               </p>
             </v-card-text>
           </v-col>
           <!-- -----------------------------------------------
         Second Column
       ----------------------------------------------- -->
-          <v-col
-            cols="10"
-            xl="3"
-            lg="3"
-            md="5"
-            sm="9"
-            class="px-xs-0 order-sm-1 order-xl-2 order-lg-2 order-md-2"
-          >
-            <v-card-text
-              class="
-                white--text
-                text-justify
-                text-caption
-                text-xl-subtitle-1
-                text-lg-subtitle-1
-                text-md-body-2
-              "
-            >
+          <v-col cols="10" xl="3" lg="3" md="5" sm="9" class="px-xs-0 order-sm-1 order-xl-2 order-lg-2 order-md-2">
+            <v-card-text class="
+                                        white--text
+                                        text-justify
+                                        text-caption
+                                        text-xl-subtitle-1
+                                        text-lg-subtitle-1
+                                        text-md-body-2
+                                      ">
               Boogie Burger est un site fictif réalise par
               <a href="">Web Design & Com</a> comme outil démonstration pour sa
               clientèle, les informations indiquées sur le site sont fictives
@@ -181,28 +122,19 @@
           <!-- -----------------------------------------------
         Third Column
       ----------------------------------------------- -->
-          <v-col
-            cols="9"
-            xl="3"
-            lg="3"
-            md="10"
-            sm="12"
-            class="justify-center align-center order-sm-3"
-          >
-            <ul
-              class="
-                pl-0
-                d-flex
-                flex-xl-column flex-lg-column flex-md-column
-                d-sm-inline-flex
-                align-center
-                justify-space-around justify-sm-space-between
-                text-caption
-                text-xl-subtitle-1
-                text-lg-subtitle-1
-                text-md-body-2
-              "
-            >
+          <v-col cols="9" xl="3" lg="3" md="10" sm="12" class="justify-center align-center order-sm-3">
+            <ul class="
+                                        pl-0
+                                        d-flex
+                                        flex-xl-column flex-lg-column flex-md-column
+                                        d-sm-inline-flex
+                                        align-center
+                                        justify-space-around justify-sm-space-between
+                                        text-caption
+                                        text-xl-subtitle-1
+                                        text-lg-subtitle-1
+                                        text-md-body-2
+                                      ">
               <li class="my-1 mx-sm-1">
                 <a class="white--text" href="">Nos menus</a>
               </li>
@@ -227,12 +159,14 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Panier from "./components/panierClient.vue";
+import Contact from "./components/contactPage.vue"; // importe le composant contactPage.vue
 export default {
   name: "App",
 
   components: {
     HelloWorld,
     Panier,
+    Contact, // ajoute le composant contactPage.vue
   },
 
   data: () => ({
@@ -242,7 +176,7 @@ export default {
     tab: null,
     products: [],
     cart: null,
-    totalItems: 1,
+    totalItems: 0,
   }),
 
   watch: {
@@ -260,6 +194,8 @@ export default {
       this.fetchProducts();
       this.fetchCart();
     },
+
+    // compter le nombre d'items dans le panier et remplacer le chiffre dans le bouton
 
     scrollTop: function () {
       this.intervalId = setInterval(() => {
