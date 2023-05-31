@@ -2,21 +2,9 @@
   <div>
     <v-container fluid class="d-flex header justify-center align-center">
       <v-row class="text-center align-center justify-center">
-        <v-col
-          cols="6"
-          xl="7"
-          lg="7"
-          md="5"
-          sm="5"
-          class="text-center justify-center pt-sm-12"
-        >
+        <v-col cols="6" xl="7" lg="7" md="5" sm="5" class="text-center justify-center pt-sm-12">
           <div class="justify-center">
-            <img
-              src="../assets/Boogie Burger header.png"
-              :aspect-ratio="16 / 9"
-              class="header-img"
-              alt=""
-            />
+            <img src="../assets/Boogie Burger header.png" :aspect-ratio="16 / 9" class="header-img" alt="" />
           </div>
 
           <v-btn v-bind="size" class="ma-2" outlined color="primary" @click="$vuetify.goTo('#services')">
@@ -31,157 +19,60 @@
     <v-container fluid class="news py-13 app">
       <v-row class="justify-center text-center">
         <v-col class="d-flex child-flex" cols="6" xl="4" lg="4" md="5" sm="6">
-          <img
-            contain
-            aspect-ratio="1"
-            max-width="500"
-            min-width="200"
-            src="../assets/banniere-Frites-maison.jpg"
-            alt=""
-        /></v-col>
+          <img contain aspect-ratio="1" max-width="500" min-width="200" src="../assets/banniere-Frites-maison.jpg"
+            alt="" /></v-col>
         <v-col class="d-flex child-flex" cols="6" xl="4" lg="4" md="5" sm="6">
-          <img
-            contain
-            aspect-ratio="1"
-            max-width="500"
-            src="../assets/NOUVEAU-veggie-burger.jpg"
-            alt=""
-        /></v-col>
-        <v-col
-          class="d-flex child-flex"
-          cols="12"
-          xl="8"
-          lg="8"
-          md="10"
-          sm="12"
-          color="black"
-        >
-          <img
-            contain
-            max-width="500"
-            src="../assets/Banniere-Ice-Cream.jpg"
-            alt=""
-          />
+          <img contain aspect-ratio="1" max-width="500" src="../assets/NOUVEAU-veggie-burger.jpg" alt="" /></v-col>
+        <v-col class="d-flex child-flex" cols="12" xl="8" lg="8" md="10" sm="12" color="black">
+          <img contain max-width="500" src="../assets/Banniere-Ice-Cream.jpg" alt="" />
         </v-col>
       </v-row>
-      <v-row
-        class="justify-center mt-10 my-0 my-xl-12 my-lg-12 my-md-12 my-sm-12"
-      >
-        <v-hover v-slot="{ hover }"
-          ><v-btn
-            id="services"
-            v-bind="size"
-            v-bind:class="{ active: currentFilter === 'menu' }"
-            v-on:click="setFilter('menu')"
-            class="filter select text-lg-h6 font-weight-bold"
-            :style="{ color: hover ? '#F57C00' : 'white' }"
-            plain
-            >Nos menus</v-btn
-          ></v-hover
-        >
-        <v-hover v-slot="{ hover }"
-          ><v-btn
-            v-bind="size"
-            v-bind:class="{ active: currentFilter === 'burger' }"
-            @click="setFilter('burger')"
-            class="filter select text-lg-h6 font-weight-bold"
-            :style="{ color: hover ? '#F57C00' : 'white' }"
-            plain
-            >Burger</v-btn
-          ></v-hover
-        >
-        <v-hover v-slot="{ hover }"
-          ><v-btn
-            v-bind="size"
-            v-bind:class="{ active: currentFilter === 'glace' }"
-            @click="setFilter('glace')"
-            class="filter select text-lg-h6 font-weight-bold"
-            :style="{ color: hover ? '#F57C00' : 'white' }"
-            plain
-            >Glace</v-btn
-          ></v-hover
-        >
-        <v-hover v-slot="{ hover }"
-          ><v-btn
-            v-bind="size"
-            v-bind:class="{ active: currentFilter === 'boisson' }"
-            @click="setFilter('boisson')"
-            class="filter select text-lg-h6 font-weight-bold"
-            :style="{ color: hover ? '#F57C00' : 'white' }"
-            plain
-            >Boisson</v-btn
-          ></v-hover
-        >
+      <v-row class="justify-center mt-10 my-0 my-xl-12 my-lg-12 my-md-12 my-sm-12">
+        <v-hover v-slot="{ hover }"><v-btn id="services" v-bind="size" v-bind:class="{ active: currentFilter === 'menu' }"
+            v-on:click="setFilter('menu')" class="filter select text-lg-h6 font-weight-bold"
+            :style="{ color: hover ? '#F57C00' : 'white' }" plain>Nos menus</v-btn></v-hover>
+        <v-hover v-slot="{ hover }"><v-btn v-bind="size" v-bind:class="{ active: currentFilter === 'burger' }"
+            @click="setFilter('burger')" class="filter select text-lg-h6 font-weight-bold"
+            :style="{ color: hover ? '#F57C00' : 'white' }" plain>Burger</v-btn></v-hover>
+        <v-hover v-slot="{ hover }"><v-btn v-bind="size" v-bind:class="{ active: currentFilter === 'glace' }"
+            @click="setFilter('glace')" class="filter select text-lg-h6 font-weight-bold"
+            :style="{ color: hover ? '#F57C00' : 'white' }" plain>Glace</v-btn></v-hover>
+        <v-hover v-slot="{ hover }"><v-btn v-bind="size" v-bind:class="{ active: currentFilter === 'boisson' }"
+            @click="setFilter('boisson')" class="filter select text-lg-h6 font-weight-bold"
+            :style="{ color: hover ? '#F57C00' : 'white' }" plain>Boisson</v-btn></v-hover>
       </v-row>
 
       <v-container>
         <v-row class="justify-center">
-          <v-col
-            cols="6"
-            xl="3"
-            lg="3"
-            md="6"
-            sm="6"
-            class="text-center d-flex child-flex"
-            v-for="product in products"
-            v-bind:key="product.title"
-          >
-            <div
-              class="d-flex project justify-center"
-              v-if="
-                currentFilter === product.category || currentFilter === 'ALL'
-              "
-            >
+          <v-col cols="6" xl="3" lg="3" md="6" sm="6" class="text-center d-flex child-flex" v-for="product in products"
+            v-bind:key="product.title">
+            <div class="d-flex project justify-center"
+              v-if="currentFilter === product.category || currentFilter === 'ALL'">
               <transition name="fade">
                 <v-card flat elevation="7" class="justify-center text-center">
                   <div>
-                    <v-img
-                      :aspect-ratio="1.1"
-                      :src="product.img"
-                      alt=""
-                    ></v-img>
+                    <v-img :aspect-ratio="1.1" :src="product.img" alt=""></v-img>
                   </div>
-                  <v-card-title
-                    class="d-block text-body-2 text-sm-body-1"
-                    v-if="product.name"
-                    >{{ product.name }}</v-card-title
-                  >
-                  
+                  <v-card-title class="d-block text-body-2 text-sm-body-1" v-if="product.name">{{ product.name
+                  }}</v-card-title>
+
                   <v-card-text>
                     <v-row align="center">
-                      <v-col cols="12">
-                        <v-divider class="mx-4"></v-divider
-                      ></v-col>
+                      <v-col cols="12"> <v-divider class="mx-4"></v-divider></v-col>
 
                       <v-row class="my-1 align-center justify-center">
                         <v-col cols="6">
-                          <v-btn
-                            v-bind="size"
-                            rounded
-                            color="primary"
-                            class="
-                              white--text
-                              font-weight-bold
-                              py-xl-0 py-lg-0 py-md-1 py-sm-1
-                              text-md-caption"
-                              @click="addToCart"
-                          >
-                            ajouter <v-icon dark right> mdi-cart </v-icon>
+                          <v-btn v-bind="size" rounded color="primary"
+                            class="white--text font-weight-bold py-xl-0 py-lg-0 py-md-1 py-sm-1 text-md-caption"
+                            @click="addToCart">
+                            ajouter
+                            <v-icon dark right> mdi-cart </v-icon>
                           </v-btn>
                         </v-col>
                         <v-col cols="5">
                           <h1
-                            class="
-                              primary--text
-                              font-weight-bold
-                              text-body-2
-                              text-xl-h6
-                              text-md-h6
-                              text-lg-h6
-                              text-sm-subtitle-1
-                            "
-                            v-if="product.prix"
-                          >
+                            class="primary--text font-weight-bold text-body-2 text-xl-h6 text-md-h6 text-lg-h6 text-sm-subtitle-1"
+                            v-if="product.prix">
                             {{ product.prix }}€
                           </h1>
                         </v-col>
@@ -199,76 +90,26 @@
       <countDown :date="end" @onFinish="finish()"></countDown>
     </v-container>
     <v-container fluid>
-      <v-row
-        class="
-          align-center
-          justify-center
-          py-sm-12
-          my-12 my-xl-0 my-lg-0 my-md-0 my-sm-0
-        "
-      >
-        <v-col
-          class="
-            text-center
-            order-2 order-xl-1 order-lg-1 order-md-1 order-sm-1
-          "
-          cols="10"
-          xl="3"
-          lg="5"
-          md="6"
-          sm="6"
-        >
-          <h2
-            class="
-              pb-8 pb-sm-5
-              text-uppercase
-              font-weight-bold
-              text-lg-h4 text-sm-h6
-            "
-            style="font-family: 'Oswald', sans-serif"
-          >
+      <v-row class="align-center justify-center py-sm-12 my-12 my-xl-0 my-lg-0 my-md-0 my-sm-0">
+        <v-col class="text-center order-2 order-xl-1 order-lg-1 order-md-1 order-sm-1" cols="10" xl="3" lg="5" md="6"
+          sm="6">
+          <h2 class="pb-8 pb-sm-5 text-uppercase font-weight-bold text-lg-h4 text-sm-h6"
+            style="font-family: 'Oswald', sans-serif">
             Chez Boogie Burger
           </h2>
 
-          <p
-            class="text-center text-caption"
-            style="font-family: 'Raleway', sans-serif; font-weight: normal"
-          >
-            Boogie Burger l'endroit idéal pour vous régaler le tout dans une
-            ambiance chaleureuse et conviviale en famille et entre amis.
+          <p class="text-center text-caption" style="font-family: 'Raleway', sans-serif; font-weight: normal">
+            Boogie Burger l'endroit idéal pour vous régaler le tout dans une ambiance
+            chaleureuse et conviviale en famille et entre amis.
           </p>
-          <v-btn
-            v-bind="size"
-            class="my-2 my-xl-8 my-lg-8 my-md-8 my-sm-5"
-            color="primary"
-          >
-            En savoir plus</v-btn
-          >
+          <v-btn v-bind="size" class="my-2 my-xl-8 my-lg-8 my-md-8 my-sm-5" color="primary">
+            En savoir plus</v-btn>
         </v-col>
-        <v-col
-          class="
-            text-center
-            order-xl-2 order-lg-2 order-md-2 order-sm-2 order-xs-1
-          "
-          cols="8"
-          xl="3"
-          lg="6"
-          md="4"
-          sm="4"
-        >
-          <v-img
-            v-if="$vuetify.breakpoint.smAndDown"
-            contain
-            src="../assets/front-view-burgers-stand.jpg"
-          />
-          <v-img
-            v-else
-            contain
-            :aspect-ratio="1 / 3"
-            max-height="593"
-            max-width="293"
-            src="../assets/high-angle-fresh-burger-fries-and-sauce.jpg"
-          />
+        <v-col class="text-center order-xl-2 order-lg-2 order-md-2 order-sm-2 order-xs-1" cols="8" xl="3" lg="6" md="4"
+          sm="4">
+          <v-img v-if="$vuetify.breakpoint.smAndDown" contain src="../assets/front-view-burgers-stand.jpg" />
+          <v-img v-else contain :aspect-ratio="1 / 3" max-height="593" max-width="293"
+            src="../assets/high-angle-fresh-burger-fries-and-sauce.jpg" />
         </v-col>
       </v-row>
     </v-container>
@@ -288,13 +129,13 @@ export default {
     currentFilter: "burger",
     carts: [],
     products: [
-      
       {
         id: 1,
         category: "menu",
         img: require("../assets/logo.png"),
         name: "Menu Kids",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "4,99",
         qty: 1,
       },
@@ -303,7 +144,8 @@ export default {
         category: "menu",
         img: require("../assets/logo.png"),
         name: "Menu Giant",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -312,7 +154,8 @@ export default {
         category: "menu",
         img: require("../assets/logo.png"),
         name: "Menu Texan",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -321,7 +164,8 @@ export default {
         category: "menu",
         img: require("../assets/logo.png"),
         name: "Menu XXL",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -330,7 +174,8 @@ export default {
         category: "burger",
         img: require("../assets/spicyBurger.jpg"),
         name: "Farmer Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -339,7 +184,8 @@ export default {
         category: "burger",
         img: require("../assets/farmerBurger.jpg"),
         name: "Spicy Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -348,7 +194,8 @@ export default {
         category: "burger",
         img: require("../assets/towerBurger.jpg"),
         name: "Tower Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -357,7 +204,8 @@ export default {
         category: "burger",
         img: require("../assets/cheeseBurger.jpg"),
         name: "Cheese Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -366,7 +214,8 @@ export default {
         category: "burger",
         img: require("../assets/baconBurger.jpg"),
         name: "Bacon Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -375,7 +224,8 @@ export default {
         category: "burger",
         img: require("../assets/spaceBurger.jpeg"),
         name: "Space Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -393,7 +243,8 @@ export default {
         category: "burger",
         img: require("../assets/spaceBurger.jpg"),
         name: "Chicken Burger",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -403,7 +254,8 @@ export default {
         category: "glace",
         img: require("../assets/logo.png"),
         name: "Crunchy cookie",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -412,7 +264,8 @@ export default {
         category: "glace",
         img: require("../assets/logo.png"),
         name: "Coupe America",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -421,7 +274,8 @@ export default {
         category: "glace",
         img: require("../assets/logo.png"),
         name: "Baby Love",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -430,7 +284,8 @@ export default {
         category: "glace",
         img: require("../assets/logo.png"),
         name: "Choco Pistache",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "9,99",
         qty: 1,
       },
@@ -439,7 +294,8 @@ export default {
         category: "boisson",
         img: require("../assets/logo.png"),
         name: "Soda cola",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "2,99",
         qty: 1,
       },
@@ -448,7 +304,8 @@ export default {
         category: "boisson",
         img: require("../assets/logo.png"),
         name: "Limonade",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "2,99",
         qty: 1,
       },
@@ -457,7 +314,8 @@ export default {
         category: "boisson",
         img: require("../assets/logo.png"),
         name: "Orangade",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "2,99",
         qty: 1,
       },
@@ -466,7 +324,8 @@ export default {
         category: "boisson",
         img: require("../assets/logo.png"),
         name: "Eau aromatisé",
-        text: "Smashburger looks for unique flavors & ingredients to build our local burgers.",
+        text:
+          "Smashburger looks for unique flavors & ingredients to build our local burgers.",
         prix: "2,99",
         qty: 1,
       },
@@ -478,28 +337,26 @@ export default {
       this.currentFilter = filter;
     },
 
+    addToCart(product) {
+    const cartItem = this.carts.find(item => item.id === product.id);
+    if (cartItem) {
+      cartItem.qty++;
+    } else {
+      this.carts.push({ ...product });
+    }
+  },
+
+  updateCart(key, quantity) {
+    const cartItem = this.carts.find(item => item.id === key);
+    if (cartItem) {
+      cartItem.qty = quantity;
+    }
+  },
+
     finish() {
       console.log("finish");
     },
-
-    updateCart(key) {
-      let productId = this.products[key].id;
-      let isEqualId = (element) => element.id === productId;
-      let cartIndex = this.carts.findIndex(isEqualId);
-      if (cartIndex === -1) {
-        this.products[key].qty = 1;
-        this.carts.push(this.products[key]);
-      } else {
-        this.carts[cartIndex].qty += 1;
-        this.carts.splice(cartIndex, 1, this.products[key]);
-      }
-    },
-
     
-    addToCart() {
-      this.$emit('add-to-cart', this.product.id, 1);
-    }
-
   },
 
   computed: {
@@ -509,7 +366,6 @@ export default {
         sm: "small",
         md: "medium",
         xl: "x-large",
-
       }[this.$vuetify.breakpoint.name];
       return size ? { [size]: true } : {};
     },
@@ -555,6 +411,7 @@ export default {
 .select {
   color: white;
 }
+
 .select:hover {
   color: "#F57C00";
 }
