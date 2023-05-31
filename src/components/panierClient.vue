@@ -2,6 +2,15 @@
   <v-container>
     <v-list subheader two-line>
       <v-subheader class="text-h6 black primary--text mb-4">Votre panier</v-subheader>
+
+      <!-- Panier vide si aucun produit -->
+      <v-list-item v-if="products.length === 0">
+        <v-list-item-content>
+          <v-list-item-title class="text-h6 black primary--text mb-4">Votre panier est vide</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <!-- Liste des produits -->
       <v-list-item v-for="(product, index) in products" :key="product.id">
         <v-list-item-avatar>
           <img :src="product.img" :alt="product.description" />
@@ -58,7 +67,7 @@ export default {
   },
   methods: {
     removeFromCart(index) {
-      this.products.splice(index, 1); // supprime l'élément du tableau
+      this.products.splice(index, 1);  // supprime l'élément du tableau
     },
   },
 };
