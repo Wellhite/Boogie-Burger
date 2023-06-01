@@ -125,19 +125,6 @@ export default {
     end: new Date("2023-06-03T16:37:00"),
     currentFilter: "burger",
     carts: [],
-    /*products: [
-        {
-          id: 14,
-          category: "glace",
-          img: require("../assets/logo.png"),
-          name: "Coupe America",
-          text:
-            "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-          prix: "9,99",
-          qty: 1,
-        },
-        // Ajoutez d'autres products ici si nécessaire
-      ],*/
     products: [
       {
         id: 1,
