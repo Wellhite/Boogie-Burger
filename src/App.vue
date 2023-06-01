@@ -26,14 +26,19 @@
           </template>
           <Contact />
         </v-dialog>
+
         <v-btn flat class="black">
           <v-row justify="center">
             <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#cartModal"
-              @click.stop="dialog = true"><v-icon medium>mdi-cart</v-icon>{{ totalItems }}
+              @click.stop="dialog = true">
+              <v-icon medium>mdi-cart</v-icon>
+              <span v-if="cart && cart.line_items.length > 0">{{ totalItems }}</span>
             </v-btn>
             <v-dialog v-model="dialog" width="500">
               <Panier />
-            </v-dialog></v-row></v-btn>
+            </v-dialog>
+          </v-row>
+        </v-btn>
       </div>
 
     </v-app-bar>
@@ -76,16 +81,16 @@
         First Column
       ----------------------------------------------- -->
           <v-col cols="12" xl="3" lg="3" md="4" sm="12" class="
-                                      text-xl-left text-lg-left text-md-left text-sm-center
-                                      px-xs-0
-                                      order-2 order-sm-2 order-xl-1 order-lg-1 order-md-1
-                                    ">
-            <v-card-text class="
-                                        text-caption
-                                        text-xl-subtitle-1
-                                        text-lg-subtitle-1
-                                        text-md-body-2
+                                        text-xl-left text-lg-left text-md-left text-sm-center
+                                        px-xs-0
+                                        order-2 order-sm-2 order-xl-1 order-lg-1 order-md-1
                                       ">
+            <v-card-text class="
+                                          text-caption
+                                          text-xl-subtitle-1
+                                          text-lg-subtitle-1
+                                          text-md-body-2
+                                        ">
               <p class="mt-4 mb-0">
                 <v-icon color="primary"> mdi-map-marker</v-icon>17 rue Leon
                 Gambetta, Lille
@@ -106,13 +111,13 @@
       ----------------------------------------------- -->
           <v-col cols="10" xl="3" lg="3" md="5" sm="9" class="px-xs-0 order-sm-1 order-xl-2 order-lg-2 order-md-2">
             <v-card-text class="
-                                        white--text
-                                        text-justify
-                                        text-caption
-                                        text-xl-subtitle-1
-                                        text-lg-subtitle-1
-                                        text-md-body-2
-                                      ">
+                                          white--text
+                                          text-justify
+                                          text-caption
+                                          text-xl-subtitle-1
+                                          text-lg-subtitle-1
+                                          text-md-body-2
+                                        ">
               Boogie Burger est un site fictif réalise par
               <a href="">Web Design & Com</a> comme outil démonstration pour sa
               clientèle, les informations indiquées sur le site sont fictives
@@ -124,17 +129,17 @@
       ----------------------------------------------- -->
           <v-col cols="9" xl="3" lg="3" md="10" sm="12" class="justify-center align-center order-sm-3">
             <ul class="
-                                        pl-0
-                                        d-flex
-                                        flex-xl-column flex-lg-column flex-md-column
-                                        d-sm-inline-flex
-                                        align-center
-                                        justify-space-around justify-sm-space-between
-                                        text-caption
-                                        text-xl-subtitle-1
-                                        text-lg-subtitle-1
-                                        text-md-body-2
-                                      ">
+                                          pl-0
+                                          d-flex
+                                          flex-xl-column flex-lg-column flex-md-column
+                                          d-sm-inline-flex
+                                          align-center
+                                          justify-space-around justify-sm-space-between
+                                          text-caption
+                                          text-xl-subtitle-1
+                                          text-lg-subtitle-1
+                                          text-md-body-2
+                                        ">
               <li class="my-1 mx-sm-1">
                 <a class="white--text" href="">Nos menus</a>
               </li>
@@ -176,6 +181,7 @@ export default {
     tab: null,
     products: [],
     cart: null,
+    carts: [],
     totalItems: 0,
   }),
 
@@ -195,7 +201,21 @@ export default {
       this.fetchCart();
     },
 
+    ajouterAuPanier(product) {
+    this.carts.push(product);
+  },
+
     // compter le nombre d'items dans le panier et remplacer le chiffre dans le bouton
+    updateTotalItems() {
+      if (this.cart && this.cart.line_items) {
+        this.totalItems = this.cart.line_items.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+      } else {
+        this.totalItems = 0;
+      }
+    },
 
     scrollTop: function () {
       this.intervalId = setInterval(() => {
@@ -219,16 +239,6 @@ export default {
       window.removeEventListener("scroll", this.onScroll);
     },
 
-    fetchCart() {
-      this.$commerce.cart
-        .retrieve()
-        .then((cart) => {
-          this.cart = cart;
-        })
-        .catch((error) => {
-          console.log("There is an error fetching the cart", error);
-        });
-    },
   },
 };
 </script>
