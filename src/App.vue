@@ -67,7 +67,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <HelloWorld />
+      <vueAccueil />
     </v-main>
     <v-footer dark padless>
       <v-card width="100%" flat tile class="black white--text text-center">
@@ -157,14 +157,14 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import vueAccueil from "./components/vueAccueil.vue";
 import Panier from "./components/panierClient.vue";
 import Contact from "./components/contactPage.vue"; // importe le composant contactPage.vue
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
+    vueAccueil,
     Panier,
     Contact, // ajoute le composant contactPage.vue
   },
