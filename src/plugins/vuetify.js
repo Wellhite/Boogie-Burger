@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
 import fr from 'vuetify/lib/locale/fr';
+import 'vue-toast-notification/dist/theme-sugar.css'
+
 Vue.use(Vuetify);
 
 
 export default new Vuetify({
   theme: {
-    dark: false,
+    dark: true,
     themes: {
       light: {
         primary: '#F57C00',
@@ -19,7 +21,7 @@ export default new Vuetify({
         warning: '#FFC107'
       },
       dark: {
-        primary: '#d51b80',
+        primary: '#F57C00',
         secondary: '#131519',
         texte: '#7a7a7a',
         titre: '#252B7F',
