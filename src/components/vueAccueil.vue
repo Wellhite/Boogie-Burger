@@ -118,7 +118,7 @@ import newsLetter from "./newsLetter.vue";
 
 
 export default {
-  name: "HelloWorld",
+  name: "vueAccueil",
   components: { countDown, newsLetter },
 
   data: () => ({
@@ -133,7 +133,7 @@ export default {
         name: "Menu Kids",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "4,99",
+        prix: "4.99",
         qty: 1,
       },
       {
@@ -143,7 +143,7 @@ export default {
         name: "Menu Giant",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -153,7 +153,7 @@ export default {
         name: "Menu Texan",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -163,7 +163,7 @@ export default {
         name: "Menu XXL",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -173,7 +173,7 @@ export default {
         name: "Farmer Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -183,7 +183,7 @@ export default {
         name: "Spicy Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -193,7 +193,7 @@ export default {
         name: "Tower Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -203,7 +203,7 @@ export default {
         name: "Cheese Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -213,7 +213,7 @@ export default {
         name: "Bacon Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -223,7 +223,7 @@ export default {
         name: "Space Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -232,7 +232,7 @@ export default {
         img: require("../assets/xllBurger.jpg"),
         name: "XXL Burger",
         text: "4 STEAK, cheddar, salade, bacon.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -242,7 +242,7 @@ export default {
         name: "Chicken Burger",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
 
@@ -253,7 +253,7 @@ export default {
         name: "Crunchy cookie",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -263,7 +263,7 @@ export default {
         name: "Coupe America",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -273,7 +273,7 @@ export default {
         name: "Baby Love",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -283,7 +283,7 @@ export default {
         name: "Choco Pistache",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "9,99",
+        prix: "9.99",
         qty: 1,
       },
       {
@@ -293,7 +293,7 @@ export default {
         name: "Soda cola",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "2,99",
+        prix: "2.99",
         qty: 1,
       },
       {
@@ -303,7 +303,7 @@ export default {
         name: "Limonade",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "2,99",
+        prix: "2.99",
         qty: 1,
       },
       {
@@ -313,7 +313,7 @@ export default {
         name: "Orangade",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "2,99",
+        prix: "2.99",
         qty: 1,
       },
       {
@@ -323,7 +323,7 @@ export default {
         name: "Eau aromatisé",
         text:
           "Smashburger looks for unique flavors & ingredients to build our local burgers.",
-        prix: "2,99",
+        prix: "2.99",
         qty: 1,
       },
     ],
