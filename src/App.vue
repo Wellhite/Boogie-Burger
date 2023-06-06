@@ -27,24 +27,24 @@
         </v-dialog>
 
         <v-btn flat class="black">
-          <v-row justify="center">
-            <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#cartModal" @click.stop="dialog = true">
-              <v-icon medium>mdi-cart</v-icon>
-              <span class="badge badge-pill badge-danger">{{ totalItems }}</span>
-            </v-btn>
-            <v-dialog v-model="dialog" width="500">
-              <Panier />
-            </v-dialog>
-          </v-row>
+      <v-row justify="center">
+        <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#cartModal" @click.stop="cartDialog = true">
+          <v-icon medium>mdi-cart</v-icon>
+          <div :key="totalItems">{{ totalItems }}</div>
         </v-btn>
+        <v-dialog v-model="cartDialog" width="500">
+          <Panier :totalItems="totalItems" @update-total-items="totalItems = $event" />
+        </v-dialog>
+      </v-row>
+    </v-btn>
 
         <!-- Bouton pour se connecter -->
         <v-btn flat class="black">
           <v-row justify="center">
-            <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#loginModal" @click="dialog = true">
+            <v-btn rounded icon class="primary white--text" data-toggle="modal" data-target="#loginModal" @click="loginDialog = true">
               <v-icon medium>mdi-account</v-icon>
             </v-btn>
-            <v-dialog v-model="dialog" width="500">
+            <v-dialog v-model="loginDialog" width="500">
               <Login />
             </v-dialog>
           </v-row>
@@ -86,7 +86,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <vueAccueil />
+      <vueAccueil @update-total-items="totalItems = $event"></vueAccueil>
     </v-main>
 
     <!-- Bouton de scroll -->
@@ -189,6 +189,7 @@
 import vueAccueil from "./components/vueAccueil.vue";
 import Panier from "./components/panierClient.vue";
 import Contact from "./components/contactPage.vue"; // importe le composant contactPage.vue
+import Login from "./components/loginForm.vue"; // importe le composant loginForm.vue
 export default {
   name: "App",
 
@@ -196,19 +197,20 @@ export default {
     vueAccueil,
     Panier,
     Contact, // ajoute le composant contactPage.vue
+    Login, // ajoute le composant loginForm.vue
   },
 
   data() {
     return {
       drawer: false,
       dialog: false,
-      group: null,
-      tab: null,
-      products: [],
-      cart: null,
+      cartDialog: false, // Contrôle l'ouverture du dialogue du panier
+      loginDialog: false, // Contrôle l'ouverture du dialogue de connexion
+      group: null, // Contrôle le groupe d'onglets actif
+      tab: null, // Contrôle l'onglet actif
+      totalItems: 0, // Nombre total d'articles dans le panier
+      fab: false, // Contrôle l'affichage du bouton de scroll
       carts: [],
-      totalItems: 0,
-      fab: false,
     };
   },
 
@@ -219,6 +221,8 @@ export default {
   },
 
   methods: {
+    // Méthode permettant d'initialiser le panier
+
     created: function () {
       setInterval(() => {
         this.show = !this.show;
@@ -226,8 +230,6 @@ export default {
 
       // Appeler scrollTop pour vérifier si le bouton flottant doit être affiché initialement
       this.scrollTop();
-      this.fetchCart();
-      this.fetchProducts();
 
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
@@ -243,15 +245,6 @@ export default {
     toggleTheme() {
     this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     localStorage.setItem('theme', this.$vuetify.theme.dark ? 'dark' : 'light');
-    },
-
-
-    // Méthode pour récupérer le panier du client depuis l'API Commerce.js et le stocker dans la variable cart
-    fetchCart() {
-      this.$commerce.cart.retrieve().then((cart) => {
-        this.cart = cart;
-        this.totalItems = this.cart.total_items;
-      });
     },
     
     scrollTop() {

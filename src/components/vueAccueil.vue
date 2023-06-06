@@ -119,12 +119,13 @@ import newsLetter from "./newsLetter.vue";
 
 export default {
   name: "vueAccueil",
-  components: { countDown, newsLetter },
+  components: { countDown, newsLetter, },
 
   data: () => ({
     end: new Date("2023-06-03T16:37:00"),
     currentFilter: "burger",
     carts: [],
+    cart: [],
     products: [
       {
         id: 1,
@@ -329,28 +330,55 @@ export default {
     ],
   }),
 
+  created() {
+    this.initCart(); // Appelez la méthode d'initialisation du panier
+  },
+  mounted() {
+    this.initializeCart();
+  },
+
   methods: {
+
+    initCart() {
+      this.carts = [];
+    },
+    initializeCart() {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        this.carts = JSON.parse(savedCart);
+      }
+    },
+
   setFilter(filter) {
     this.currentFilter = filter;
   },
 
-  ajouterAuPanier(product) {
+ ajouterAuPanier(product) {
+      this.carts.push(product);
+      localStorage.setItem("cart", JSON.stringify(this.carts));
       this.$root.$emit("objet-ajoute", product);
     },
 
+    
   finish() {
     // Logique à exécuter lorsque le compte à rebours est terminé
   },
 
   updateCart(key, quantity) {
+
     const cartItem = this.carts.find(item => item.id === key);
     if (cartItem) {
       cartItem.qty = quantity;
     } else {
       this.carts.push({ id: key, qty: quantity });
     }
+    this.$emit('update-total-items', this.carts.length)
   }
 },
+
+saveCart() {
+      localStorage.setItem("carts", JSON.stringify(this.carts));
+    },
 
   computed: {
     size() {
@@ -362,6 +390,10 @@ export default {
       }[this.$vuetify.breakpoint.name];
       return size ? { [size]: true } : {};
     },
+
+    totalItems() {
+    return this.carts.length;
+  },
   },
 };
 </script>
