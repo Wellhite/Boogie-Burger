@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib/framework';
 import fr from 'vuetify/lib/locale/fr';
-import 'vue-toast-notification/dist/theme-sugar.css'
 
 Vue.use(Vuetify);
 
